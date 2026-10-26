@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrustPass — SD-JWT VC In-Browser Spike</title>
+    <meta name="description" content="In-browser issuance, selective disclosure, verification of SD-JWT VC using @owf/crypto and RFC 7638 JWK thumbprint calculation." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <div class="logo-group">
+          <div class="shield-icon">🛡️</div>
+          <div>
+            <div class="subtitle">TrustPass Protocol · Architecture Spike</div>
+            <h1>In-Browser SD-JWT VC & RFC 7638 Thumbprint</h1>
+          </div>
+        </div>
+        <div id="overall-status" class="status-badge running">
+          <span class="dot"></span> Running Suite...
+        </div>
+      </header>
+
+      <main class="content-grid">
+        <!-- Step 1: Issuer Key & Thumbprint -->
+        <section class="card" id="card-key">
+          <div class="card-header">
+            <span class="step-num">01</span>
+            <h2>Issuer Key & RFC 7638 JWK Thumbprint</h2>
+            <span class="badge" id="badge-key">Pending</span>
+          </div>
+          <p class="card-desc">
+            Generating P-256 (ES256) key pair via <code>@owf/crypto</code> and computing canonical RFC 7638 SHA-256 thumbprint for on-chain identity binding.
+          </p>
+          <div class="data-block" id="data-key">
+            <div class="skeleton">Initializing crypto...</div>
+          </div>
+        </section>
+
+        <!-- Step 2: Issue Credential -->
+        <section class="card" id="card-issue">
+          <div class="card-header">
+            <span class="step-num">02</span>
+            <h2>Issue SD-JWT Credential</h2>
+            <span class="badge" id="badge-issue">Pending</span>
+          </div>
+          <p class="card-desc">
+            Issuing <code>UniversityDegreeCredential</code> with 6 selective claims: <code>name</code>, <code>studentId</code>, <code>degree</code>, <code>grade</code>, <code>institution</code>, <code>issueDate</code>.
+          </p>
+          <div class="data-block" id="data-issue">
+            <div class="skeleton">Waiting for key generation...</div>
+          </div>
+        </section>
+
+        <!-- Step 3: Present with Selective Disclosure -->
+        <section class="card" id="card-present">
+          <div class="card-header">
+            <span class="step-num">03</span>
+            <h2>Selective Disclosure Presentation</h2>
+            <span class="badge" id="badge-present">Pending</span>
+          </div>
+          <p class="card-desc">
+            Creating presentation revealing ONLY <code>degree</code> and <code>institution</code>. Remaining 4 claims remain concealed in the issuer JWT <code>_sd</code> digest array.
+          </p>
+          <div class="data-block" id="data-present">
+            <div class="skeleton">Waiting for issuance...</div>
+          </div>
+        </section>
+
+        <!-- Step 4: In-Browser Verification -->
+        <section class="card" id="card-verify">
+          <div class="card-header">
+            <span class="step-num">04</span>
+            <h2>In-Browser Verification (@owf/crypto)</h2>
+            <span class="badge" id="badge-verify">Pending</span>
+          </div>
+          <p class="card-desc">
+            Verifying cryptographic signature and disclosure digests completely inside the browser using standard Web Crypto.
+          </p>
+          <div class="data-block" id="data-verify">
+            <div class="skeleton">Waiting for presentation...</div>
+          </div>
+        </section>
+      </main>
+
+      <section class="card log-card">
+        <div class="card-header">
+          <span class="step-num">LOGS</span>
+          <h2>Execution Telemetry & Diagnostics</h2>
+          <button id="rerun-btn" class="btn secondary">Re-run Suite</button>
+        </div>
+        <pre id="console-logs" class="console-box"></pre>
+      </section>
+
+      <footer class="footer">
+        <div>TrustPass Spike · Ethereum Sepolia Credential Architecture</div>
+        <div id="env-info" class="env-info">Detecting environment...</div>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

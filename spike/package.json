@@ -1,0 +1,27 @@
+{
+  "name": "trustpass-sd-jwt-spike",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "spike:01": "tsx src/01-issue-and-present.ts",
+    "spike:02": "tsx src/02-tamper-and-leak.ts",
+    "spike:03": "tsx src/03-algo-and-eth-binding.ts",
+    "spike:04": "tsx src/04-on-chain-hash.ts",
+    "spike:all": "tsx src/01-issue-and-present.ts && tsx src/02-tamper-and-leak.ts && tsx src/03-algo-and-eth-binding.ts && tsx src/04-on-chain-hash.ts",
+    "versions": "tsx src/print-versions.ts"
+  },
+  "dependencies": {
+    "@noble/hashes": "^1.7.2",
+    "@noble/secp256k1": "^2.2.3",
+    "@owf/crypto": "^0.5.0",
+    "@sd-jwt/core": "^0.20.0",
+    "@sd-jwt/sd-jwt-vc": "^0.20.0",
+    "jose": "^6.0.11"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.7.3"
+  }
+}

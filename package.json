@@ -1,0 +1,19 @@
+{
+  "name": "trustpass-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "hardhat test",
+    "compile": "hardhat compile"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition": "3.1.9",
+    "@nomicfoundation/hardhat-ignition-viem": "3.1.6",
+    "@nomicfoundation/hardhat-keystore": "3.1.2",
+    "@types/node": "22.15.3",
+    "forge-std": "github:foundry-rs/forge-std#v1.17.0",
+    "hardhat": "3.21.0",
+    "typescript": "5.7.3"
+  }
+}
